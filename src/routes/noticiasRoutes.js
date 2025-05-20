@@ -7,7 +7,7 @@ import {
   eliminarNoticia,
   obtenerNoticiaPorSlug,
 } from "../controllers/noticiascontroller.js";
-import { verificarToken } from "../middleware/authMiddleware.js";
+import { verificarToken } from "../middleware/authmiddleware.js";
 
 const router = express.Router();
 
