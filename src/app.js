@@ -30,7 +30,7 @@ app.use("/api/noticias", noticiasRoutes);
 
 // Ruta de prueba
 app.get("/", (req, res) => {
-  res.json({ mensaje: "API de Noticias funcionando correctamente" });
+  res.json({ mensaje: "API de Justicia funcionando correctamente" });
 });
 
 // Manejo de rutas no encontradas
