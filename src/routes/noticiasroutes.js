@@ -17,7 +17,7 @@ router.get("/:id", obtenerNoticiaPorId);
 router.get("/:slug", obtenerNoticiaPorSlug);
 
 // Rutas protegidas (requieren autenticación)
-router.post("/", verificarToken, crearNoticia);
+router.post("/", crearNoticia);
 router.put("/:id", verificarToken, actualizarNoticia);
 router.delete("/:id", verificarToken, eliminarNoticia);
 

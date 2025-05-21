@@ -1,6 +1,7 @@
 import { db } from "../db/connection.js";
 import { noticias } from "../db/schema.js";
 import { eq } from "drizzle-orm";
+import cloudinary from "../utils/cloudinary.js";
 
 // Obtener todas las noticias
 export const obtenerNoticias = async (req, res) => {
@@ -86,6 +87,12 @@ export const crearNoticia = async (req, res) => {
   }
 
   try {
+    // Subir imagen a Cloudinary
+    let imagenUrl = null;
+    if (req.file) {
+      const result = await cloudinary.uploader.upload(req.file.path);
+      imagenUrl = result.secure_url;
+    }
     // Generar el slug
     const baseSlug = generateSlug(titulo);
     let finalSlug = baseSlug;
@@ -119,7 +126,8 @@ export const crearNoticia = async (req, res) => {
         slug: finalSlug,
         contenido,
         autor,
-        imagen: imagen || null,
+        //imagen: imagen || null,
+        imagen: imagenUrl, // Usar la URL de Cloudinary
       })
       .returning();
 

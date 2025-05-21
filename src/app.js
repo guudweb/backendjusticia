@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authroutes.js";
 import noticiasRoutes from "./routes/noticiasroutes.js";
+import upload from "./middleware/multer.js";
 
 // Cargar variables de entorno
 dotenv.config();
@@ -26,7 +27,8 @@ app.use(
 
 // Rutas
 app.use("/api/auth", authRoutes);
-app.use("/api/noticias", noticiasRoutes);
+//app.use("/api/noticias", noticiasRoutes);
+app.use("/api/noticias", upload.single("imagen"), noticiasRoutes);
 
 // Ruta de prueba
 app.get("/", (req, res) => {
