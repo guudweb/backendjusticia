@@ -2,8 +2,11 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authroutes.js";
-import noticiasRoutes from "./routes/noticiasroutes.js";
-import upload from "./middleware/multer.js";
+import noticiasRoutes from "./routes/noticiasRoutes.js";
+
+import libroRoutes from "./routes/libroRoutes.js";
+
+import { uploadNoticias, uploadLibros } from "./middleware/multer.js";
 
 // Cargar variables de entorno
 dotenv.config();
@@ -25,10 +28,20 @@ app.use(
   })
 );
 
+app.use((err, req, res, next) => {
+  if (err instanceof multer.MulterError) {
+    return res.status(400).json({
+      error: true,
+      mensaje: `Error de subida: ${err.message}`,
+    });
+  }
+  next(err);
+});
+
 // Rutas
 app.use("/api/auth", authRoutes);
-//app.use("/api/noticias", noticiasRoutes);
-app.use("/api/noticias", upload.single("imagen"), noticiasRoutes);
+app.use("/api/noticias", noticiasRoutes);
+app.use("/api/libros", libroRoutes);
 
 // Ruta de prueba
 app.get("/", (req, res) => {

@@ -21,3 +21,15 @@ export const noticias = sqliteTable("noticias", {
   createdAt: text("created_at").default(sql`CURRENT_TIMESTAMP`),
   updatedAt: text("updated_at").default(sql`CURRENT_TIMESTAMP`),
 });
+
+export const libros = sqliteTable("libros", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  titulo: text("titulo").notNull(),
+  descripcion: text("descripcion").notNull(),
+  autor: text("autor").notNull(),
+  portada: text("portada"), // URL de la imagen
+  archivo: text("archivo"), // Nueva columna para el archivo del libro
+  //slug: text("slug").notNull().unique(),
+  createdAt: text("created_at").default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").default(sql`CURRENT_TIMESTAMP`),
+});
