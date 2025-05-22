@@ -2,11 +2,9 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authroutes.js";
-import noticiasRoutes from "./routes/noticiasRoutes.js";
+import noticiasRoutes from "./routes/noticiasroutes.js";
 
 import libroRoutes from "./routes/libroRoutes.js";
-
-import { uploadNoticias, uploadLibros } from "./middleware/multer.js";
 
 // Cargar variables de entorno
 dotenv.config();
