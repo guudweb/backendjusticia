@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import authRoutes from "./routes/authroutes.js";
 import noticiasRoutes from "./routes/noticiasroutes.js";
 
-import libroRoutes from "./routes/libroRoutes.js";
+import libroRoutes from "./routes/libroroutes.js";
 
 // Cargar variables de entorno
 dotenv.config();
