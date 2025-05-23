@@ -27,9 +27,10 @@ export const libros = sqliteTable("libros", {
   titulo: text("titulo").notNull(),
   descripcion: text("descripcion").notNull(),
   autor: text("autor").notNull(),
+  tags: text("tags"),
   portada: text("portada"), // URL de la imagen
   archivo: text("archivo"), // Nueva columna para el archivo del libro
-  //slug: text("slug").notNull().unique(),
+  slug: text("slug").notNull().unique(),
   createdAt: text("created_at").default(sql`CURRENT_TIMESTAMP`),
   updatedAt: text("updated_at").default(sql`CURRENT_TIMESTAMP`),
 });

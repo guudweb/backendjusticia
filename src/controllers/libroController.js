@@ -77,7 +77,7 @@ export const obtenerlibroPorId = async (req, res) => {
 
 // Crear Libro
 export const crearLibro = async (req, res) => {
-  const { titulo, descripcion, autor } = req.body;
+  const { titulo, descripcion, autor, tags } = req.body;
 
   try {
     // Subir ambos archivos
@@ -98,6 +98,7 @@ export const crearLibro = async (req, res) => {
         titulo,
         descripcion,
         autor,
+        tags,
         portada: portadaResult?.secure_url || null,
         archivo: archivoResult?.secure_url || null,
         slug: await generateUniqueSlug(titulo),
@@ -135,6 +136,7 @@ export const actualizarLibro = async (req, res) => {
         titulo: req.body.titulo,
         descripcion: req.body.descripcion,
         autor: req.body.autor,
+        tags: req.body.tags,
         portada: portadaResult?.secure_url || req.body.portada,
         archivo: archivoResult?.secure_url || req.body.archivo,
       })

@@ -1,0 +1,1 @@
+ALTER TABLE `libros` RENAME COLUMN `categoria` TO `tag`;
